@@ -9,7 +9,6 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
         uses: actions/checkout@v2
-
       - name: Build # React Build
         run: |
           cd client
