@@ -1,0 +1,16 @@
+name: test        
+on:
+  push:
+    branches: [client]
+  pull_request:
+    branches: [client]             
+           
+jobs:                                 
+  build:                              
+    name: test job       
+    runs-on: ubuntu-18.04             
+    steps:                            
+      - uses: actions/checkout@v2
+        
+      - name: echo Hello              
+        run: echo "Hello" 
