@@ -8,11 +8,10 @@ jobs:
   build:
     runs-on: ubuntu-18.04
     steps:
-      - name: Checkout source code. # 레포지토리 체크아웃
         uses: actions/checkout@v2
 
-      - name: Install Dependencies # 의존 파일 설치
-        run: npm install
-
       - name: Build # React Build
-        run: npm run build
+        run: |
+          cd client
+          npm install
+          npm run build
