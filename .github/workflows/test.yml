@@ -1,0 +1,25 @@
+name: React build
+on:
+  push: # client Branch에서 push 이벤트가 일어났을 때만 실행
+    branches:
+      - client
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build and Deploy # React Build
+        env:
+          AWS_ACCESS_KEY_ID: '${{ secrets.AWS_ACCESS_KEY_ID }}'
+          AWS_SECRET_ACCESS_KEY: '${{ secrets.AWS_SECRET_ACCESS_KEY }}'
+        run: |
+          cd client
+          npm install
+          npm run build
+          aws s3 cp \
+          --recursive \
+          --region ap-northeast-2 \
+          build s3://todo-project-react
