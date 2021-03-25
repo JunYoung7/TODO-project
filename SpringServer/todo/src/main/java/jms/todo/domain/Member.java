@@ -9,6 +9,7 @@ import java.util.List;
 
 @Entity
 @Getter
+//테스트용으로 @Setter
 public class Member {
 
     @Id @GeneratedValue
@@ -26,4 +27,9 @@ public class Member {
     @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
     private List<ColumnT> columnTS=new ArrayList<>();
 
+
+    public Member(String nickname, String password) {
+        this.nickname = nickname;
+        this.password = password;
+    }
 }
